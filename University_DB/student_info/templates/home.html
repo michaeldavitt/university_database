@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Welcome {{ user.username }}!</h1>
+<p><a href="{% url "logout" %}">Log Out</a></p>
+<table id="student_table">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <td>
+        <a href="{% url "student_detail" student.id %}">
+          {{ student.name|capfirst }}
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url "login" %}">Log In</a>
+{% endif %}
+{% endblock %}

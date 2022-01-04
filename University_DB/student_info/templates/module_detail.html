@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{ module.code }}</h1>
+{% if module.name %}
+<p>Module Name: {{ module.name }}</p>
+{% endif %} 
+{% if module.lecturer %}
+<p>
+  Lecturer: 
+  <a href="{% url "staff_detail" module.lecturer.id %}">
+    {{ module.lecturer }}
+  </a>
+</p>
+{% endif %} 
+{% endblock %}
